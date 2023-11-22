@@ -14,18 +14,22 @@ const CartItem = ({item, itemIndex}) => {
   return (
     <div>
       
-      <div>
+      <div className="flex justify-evenly p-10 border rounded-lg">
 
-        <div>
-          <img src={item.image} />
+        <div className="h-[200px] w-[200px]">
+          <img src={item.image} className="h-full max-w-[200px]" />
         </div>
-        <div>
-          <h1>{item.title}</h1>
-          <h1>{item.description}</h1>
-          <div>
-            <p>{item.price}</p>
-            <div onClick={removeFromCart}>
-              <RiDeleteBin6Line />
+        <div className="flex flex-col justify-between max-w-[60%]">
+          <h1 className="text-gray-700 text-lg font-semibold ">{item.title}</h1>
+          <h1 className="text-gray-600">
+            {item.description.split(" ").slice(0, 15).join(" ") + "..."}
+          </h1>
+          <div className="flex justify-between h-10 items-center">
+            <p className="text-green-600 font-bold text-lg">${item.price}</p>
+            <div onClick={removeFromCart}
+             className="flex justify-center items-center cursor-pointer h-full w-10 rounded-full
+              bg-red-200 hover:bg-red-400 text-red-900 hover:text-white" >
+              <RiDeleteBin6Line className="h-5 w-5" />
             </div>
           </div>
         </div>

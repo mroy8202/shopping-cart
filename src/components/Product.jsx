@@ -18,36 +18,49 @@ const Product = ({post}) => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-between hover:scale-110 transition 
+    duration-300 ease-in shadow-[0px_0px_15px_4px_#00000024] hover:shadow-[0px_0px_20px_20px_#00000024] gap-3 p-4 mt-10 ml-5 rounded-2xl outline-green-900">
 
       <div>
-        <p>{post.title}</p>
+        <p className="text-grey-700 font-semibold text-lg truncate w-40">
+          {post.title}
+        </p>
       </div>
 
-      <div>
-        <p>{post.description}</p>
+      <div className="w-40 text-gray-400 font-normal text-[10px] text-left">
+        <p>{post.description.split(" ").slice(0, 10).join(" ") + "..."}</p>
       </div>
 
-      <div>
-        <img src={post.image} />
+      <div className="h-[180px]">
+        <img src={post.image} className="h-full w-full" />
       </div>
 
 
-      <div>
-        <p>{post.price}</p>
-      </div>
+      <div className="flex justify-between gap-12 items-center w-full mt-5">
+        <div>
+          <p className="text-green-600 font-semibold">
+            ${post.price}
+          </p>
+        </div>
 
-      <button>
-        {
-          cart.some( (p) => p.id == post.id ) ? 
-          (<button onClick={removeFromCart}>
-            Remove Item
-          </button>):
-          (<button onClick={addToCart}>
-            Add to Cart
-          </button>)
-        }
-      </button>
+        <button>
+          {
+            cart.some( (p) => p.id == post.id ) ? 
+            (<button
+             className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold text-[12px] p-1 px-3 uppercase
+             hover:bg-gray-700 hover:text-white transition duration-300 ease-in"
+             onClick={removeFromCart}>
+              Remove Item
+            </button>):
+            (<button
+             className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold text-[12px] p-1 px-3 uppercase
+             hover:bg-gray-700 hover:text-white transition duration-300 ease-in"
+              onClick={addToCart}>
+              Add to Cart
+            </button>)
+          }
+        </button>
+      </div>
 
     </div>
   )

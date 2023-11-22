@@ -29,9 +29,9 @@ const Home = () => {
   return (
     <div>
       {
-        loading ? <Spinner /> : 
+        loading ? <div className="h-screen w-screen flex justify-center items-center -mt-[80px]"><Spinner /></div> : 
         posts.length > 0 ? (
-          <div>
+          <div className=" grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
             {
               posts.map( (post) => (
                 <Product key={post.id} post={post} />
@@ -39,7 +39,9 @@ const Home = () => {
             }
           </div>
         ) : 
-        <div><p>No Data Found.</p></div>
+        <div className="flex justify-center itesm-center">
+          <p>No Data Found.</p>
+        </div>
       }
     </div>
   )
